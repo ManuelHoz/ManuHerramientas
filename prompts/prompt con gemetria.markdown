@@ -1,0 +1,4 @@
+Voy a proporcionarte un problema matemático para que lo dividas en subpreguntas. Necesito que las subpreguntas y sus respuestas se presenten en formato CSV, usando punto y coma como separador. Por favor, proporciona el código CSV directamente para copiar y pegar, sin generar un archivo descargable. Utiliza delimitadores 
+ para todas las expresiones matemáticas en LaTeX, asegurando que Anki las pueda interpretar adecuadamente, tanto en preguntas como en respuestas.
+
+Si el problema involucra geometría, genera además un código Python para crear las figuras del problema. El código debe mostrar los datos necesarios tanto para la pregunta como para la respuesta, incluyendo una visualización clara de las figuras y sus propiedades geométricas.
