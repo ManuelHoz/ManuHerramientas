@@ -9,13 +9,14 @@ class Aplicacion:
     def __init__(self, ventana):
         self.ventana = ventana
         self.ventana.title("Combinar Archivos Python")
-        
+
         # Configurar tamaño mínimo de la ventana
-        self.ventana.minsize(400, 300)
-        
+        self.ventana.minsize(600, 400)
+
         self.lista_archivos = []
         self.widgets_archivos = {}
         self.mostrando_ruta_completa = {}
+        self.texto_cabecera = ""
 
         # Configuración de estilo
         estilo = ttk.Style()
@@ -23,35 +24,67 @@ class Aplicacion:
 
         # Frame principal con fondo gris claro
         self.frame_principal = tk.Frame(ventana, bg="lightgray")
-        self.frame_principal.pack(fill=tk.BOTH, expand=True, pady=10)
+        self.frame_principal.pack(fill=tk.BOTH, expand=True, pady=10, padx=10)
+
+        # Crear Canvas y Scrollbar para la lista de archivos
+        self.canvas = tk.Canvas(self.frame_principal, bg="lightgray")
+        self.scrollbar = tk.Scrollbar(self.frame_principal, orient="vertical", command=self.canvas.yview)
+        self.frame_canvas = tk.Frame(self.canvas, bg="lightgray")
+
+        self.canvas.create_window((0, 0), window=self.frame_canvas, anchor="nw")
+        self.canvas.configure(yscrollcommand=self.scrollbar.set)
+
+        # Empaquetar los widgets de Canvas y Scrollbar
+        self.canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+        self.scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
+        
+        # Configurar el Frame dentro del Canvas
+        self.frame_canvas.bind("<Configure>", lambda e: self.canvas.configure(scrollregion=self.canvas.bbox("all")))
+
+        # Label para mostrar el texto de cabecera
+        self.label_texto_cabecera = tk.Label(self.frame_principal, text="", anchor="w", justify="left", bg="lightgray", wraplength=580, font=("Helvetica Neue", 12, "italic"))
+        self.label_texto_cabecera.pack(fill=tk.X, padx=10, pady=5)
+
+        # Frame para los botones que estarán en la parte inferior
+        self.frame_botones = tk.Frame(self.frame_principal, bg="lightgray")
+        self.frame_botones.pack(side=tk.BOTTOM, fill=tk.X, pady=10)
 
         # Botones redondeados con estilo aplicado
         self.boton_seleccionar_directorio = ttk.Button(
-            ventana, text="Seleccionar Directorio", 
+            self.frame_botones, text="Seleccionar Directorio", 
             command=self.seleccionar_directorio, 
             bootstyle="success-round-outline", 
             padding=(10,5),
             style='TButton'
         )
-        self.boton_seleccionar_directorio.pack(fill=tk.X, padx=10, pady=5)
+        self.boton_seleccionar_directorio.pack(side=tk.TOP, fill=tk.X, padx=10, pady=5)
 
         self.boton_añadir_archivo = ttk.Button(
-            ventana, text="Añadir Archivo", 
+            self.frame_botones, text="Añadir Archivo", 
             command=self.añadir_archivo, 
             bootstyle="success-round-outline", 
             padding=(10,5),
             style='TButton'
         )
-        self.boton_añadir_archivo.pack(fill=tk.X, padx=10, pady=5)
+        self.boton_añadir_archivo.pack(side=tk.TOP, fill=tk.X, padx=10, pady=5)
+
+        self.boton_agregar_texto = ttk.Button(
+            self.frame_botones, text="Agregar Texto de Cabecera", 
+            command=self.agregar_texto, 
+            bootstyle="info-round-outline", 
+            padding=(10,5),
+            style='TButton'
+        )
+        self.boton_agregar_texto.pack(side=tk.TOP, fill=tk.X, padx=10, pady=5)
 
         self.boton_combinar = ttk.Button(
-            ventana, text="Combinar Archivos", 
+            self.frame_botones, text="Combinar Archivos", 
             command=self.combinar_archivos, 
             bootstyle="success-round-outline", 
             padding=(10,5),
             style='TButton'
         )
-        self.boton_combinar.pack(fill=tk.X, padx=10, pady=20)
+        self.boton_combinar.pack(side=tk.TOP, fill=tk.X, padx=10, pady=20)
 
         # Habilitar DnD en el frame principal
         self.frame_principal.drop_target_register(DND_FILES)
@@ -71,6 +104,26 @@ class Aplicacion:
             self.lista_archivos.append(archivo)
             self.actualizar_listbox()
 
+    def agregar_texto(self):
+        opcion = messagebox.askyesno("Texto de Cabecera", "¿Deseas escribir el texto manualmente?")
+        if opcion:
+            self.texto_cabecera = simpledialog.askstring("Texto de Cabecera", "Introduce el texto de cabecera:")
+        else:
+            archivo_texto = filedialog.askopenfilename(filetypes=[("Archivos de Texto", "*.txt")], initialdir=os.getcwd())
+            if archivo_texto:
+                with open(archivo_texto, 'r') as archivo:
+                    self.texto_cabecera = archivo.read()
+
+        # Mostrar las primeras 100 palabras del texto de cabecera
+        self.mostrar_texto_cabecera()
+
+    def mostrar_texto_cabecera(self):
+        palabras = self.texto_cabecera.split()
+        texto_mostrado = ' '.join(palabras[:100])
+        if len(palabras) > 100:
+            texto_mostrado += "..."
+        self.label_texto_cabecera.config(text=texto_mostrado)
+
     def eliminar_archivo(self, archivo):
         if archivo in self.lista_archivos:
             self.lista_archivos.remove(archivo)
@@ -89,15 +142,21 @@ class Aplicacion:
             else:
                 label_archivo.config(text=archivo)
                 self.mostrando_ruta_completa[archivo] = True
+                # Asegurar que el texto largo se ajuste al ancho del label
+                label_archivo.config(wraplength=400)  # Ajustar según sea necesario
 
     def actualizar_listbox(self):
+        # Eliminar todos los widgets existentes en el frame canvas
+        for widget in self.frame_canvas.winfo_children():
+            widget.destroy()
+
         for archivo in self.lista_archivos:
             if archivo not in self.widgets_archivos:
                 self.mostrando_ruta_completa[archivo] = False
-                frame_archivo = tk.Frame(self.frame_principal, bg="lightgray")
-                frame_archivo.pack(fill=tk.X, pady=2, padx=10)
+                frame_archivo = tk.Frame(self.frame_canvas, bg="lightgray", padx=10, pady=5)
+                frame_archivo.pack(fill=tk.X, pady=2)
 
-                label_archivo = tk.Label(frame_archivo, text=os.path.basename(archivo), anchor="w", font=("Helvetica Neue", 12), bg="lightgray")
+                label_archivo = tk.Label(frame_archivo, text=os.path.basename(archivo), anchor="w", font=("Helvetica Neue", 12), bg="lightgray", wraplength=400)
                 label_archivo.pack(side=tk.LEFT, expand=True, fill=tk.X)
 
                 boton_eliminar = ttk.Button(
@@ -107,7 +166,7 @@ class Aplicacion:
                     padding=(5,5),
                     style='TButton'
                 )
-                boton_eliminar.pack(side=tk.RIGHT)
+                boton_eliminar.pack(side=tk.RIGHT, padx=5)
 
                 boton_mostrar_ruta = ttk.Button(
                     frame_archivo, text="Mostrar Ruta Completa", 
@@ -116,7 +175,7 @@ class Aplicacion:
                     padding=(5,5),
                     style='TButton'
                 )
-                boton_mostrar_ruta.pack(side=tk.RIGHT)
+                boton_mostrar_ruta.pack(side=tk.RIGHT, padx=5)
 
                 self.widgets_archivos[archivo] = frame_archivo
 
@@ -131,6 +190,8 @@ class Aplicacion:
         nombre_archivo_salida = simpledialog.askstring("Nombre del archivo", "Introduce el nombre del archivo de salida:")
         if nombre_archivo_salida:
             with open(nombre_archivo_salida, 'w') as archivo_salida:
+                if self.texto_cabecera:
+                    archivo_salida.write(self.texto_cabecera + '\n\n')  # Escribe el texto de cabecera
                 for archivo in self.lista_archivos:
                     archivo_salida.write(f'=== {os.path.basename(archivo)} ===\n')
                     with open(archivo, 'r') as archivo_py:
