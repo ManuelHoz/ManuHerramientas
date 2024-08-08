@@ -1,33 +1,38 @@
 import os
-from PIL import Image
 from moviepy.editor import VideoFileClip
 
-# Definir ANTIALIAS para compatibilidad
-Image.Resampling = Image.Resampling if hasattr(Image, 'Resampling') else Image
-Image.ANTIALIAS = Image.Resampling.LANCZOS if hasattr(Image.Resampling, 'LANCZOS') else Image.ANTIALIAS
+def obtener_directorio_actual():
+    # Obtener la ruta del directorio donde se encuentra el archivo de script
+    return os.path.dirname(os.path.abspath(__file__))
 
-# Obtener la ruta del directorio donde se encuentra el archivo de script
-directorio = os.path.dirname(os.path.abspath(__file__))
+def aumentar_volumen_video(ruta_video, factor_volumen):
+    # Cargar el video
+    clip = VideoFileClip(ruta_video)
+    
+    # Aumentar el volumen si el video tiene pista de audio
+    if clip.audio:
+        clip = clip.volumex(factor_volumen)
+    
+    return clip
 
-# Factor de aumento del volumen (por ejemplo, 1.5 aumenta el volumen en un 50%)
-factor_volumen = 3
+def procesar_videos(directorio, factor_volumen):
+    # Iterar sobre todos los archivos en el directorio
+    for archivo in os.listdir(directorio):
+        if archivo.endswith(('.mp4', '.avi', '.mov')):  # Puedes añadir más extensiones si es necesario
+            ruta_video = os.path.join(directorio, archivo)
+            
+            # Aumentar el volumen del video
+            clip_modificado = aumentar_volumen_video(ruta_video, factor_volumen)
+            
+            # Guardar el video modificado
+            ruta_guardar = os.path.join(directorio, 'modificado_' + archivo)
+            clip_modificado.write_videofile(ruta_guardar, codec='libx264')
+            
+            print(f'Video procesado y guardado como {ruta_guardar}')
+    
+    print('Procesamiento completo.')
 
-# Iterar sobre todos los archivos en el directorio
-for archivo in os.listdir(directorio):
-    if archivo.endswith(('.mp4', '.avi', '.mov')):  # Puedes añadir más extensiones si es necesario
-        ruta_video = os.path.join(directorio, archivo)
-        
-        # Cargar el video
-        clip = VideoFileClip(ruta_video)
-        
-        # Aumentar el volumen
-        if clip.audio:  # Asegurarse de que el video tenga pista de audio
-            clip = clip.volumex(factor_volumen)
-        
-        # Guardar el video modificado
-        ruta_guardar = os.path.join(directorio, 'modificado_' + archivo)
-        clip.write_videofile(ruta_guardar, codec='libx264')
-        
-        print(f'Video procesado y guardado como {ruta_guardar}')
-
-print('Procesamiento completo.')
+if __name__ == "__main__":
+    directorio = obtener_directorio_actual()
+    factor_volumen = 3
+    procesar_videos(directorio, factor_volumen)

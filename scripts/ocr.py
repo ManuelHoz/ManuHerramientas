@@ -6,40 +6,52 @@ import pytesseract
 # Si estás en Windows, puede que necesites especificar la ruta completa:
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
-def ocr_from_image(image_path):
+def realizar_ocr_en_imagen(ruta_imagen):
+    """Realiza OCR en una imagen y devuelve el texto extraído."""
     # Abrir la imagen
-    img = Image.open(image_path)
+    img = Image.open(ruta_imagen)
     
     # Configuración adicional para fórmulas matemáticas si es posible
-    custom_config = r'--oem 3 --psm 3'
+    configuracion_personalizada = r'--oem 3 --psm 3'
     
     # Usar pytesseract para hacer OCR en la imagen
-    text = pytesseract.image_to_string(img, config=custom_config)
+    texto_extraido = pytesseract.image_to_string(img, config=configuracion_personalizada)
     
-    return text
+    return texto_extraido
 
-def process_images_in_directory(directory_path, output_file):
+def procesar_imagenes_en_directorio(ruta_directorio, archivo_salida):
+    """Procesa todas las imágenes en un directorio, realiza OCR y guarda el texto en un archivo de salida."""
     # Listar todos los archivos en el directorio
-    files = os.listdir(directory_path)
+    archivos = os.listdir(ruta_directorio)
     
     # Filtrar solo las imágenes (puedes agregar más extensiones si lo necesitas)
-    image_files = [f for f in files if f.lower().endswith(('png', 'jpg', 'jpeg', 'tiff', 'bmp'))]
+    archivos_imagenes = [archivo for archivo in archivos if archivo.lower().endswith(('png', 'jpg', 'jpeg', 'tiff', 'bmp'))]
     
-    with open(output_file, 'w', encoding='utf-8') as f:
-        for image_file in image_files:
-            image_path = os.path.join(directory_path, image_file)
-            print(f"Procesando imagen: {image_path}")
-            text = ocr_from_image(image_path)
-            f.write(f"Texto extraído de {image_file}:\n{text}\n\n")
-            print(f"Texto extraído de {image_file}:\n{text}\n")
+    # Abre el archivo de salida para escribir los resultados
+    with open(archivo_salida, 'w', encoding='utf-8') as archivo:
+        for archivo_imagen in archivos_imagenes:
+            ruta_imagen = os.path.join(ruta_directorio, archivo_imagen)
+            print(f"Procesando imagen: {ruta_imagen}")
+            
+            # Realiza OCR en la imagen
+            texto_extraido = realizar_ocr_en_imagen(ruta_imagen)
+            
+            # Escribe el texto extraído en el archivo de salida
+            archivo.write(f"Texto extraído de {archivo_imagen}:\n{texto_extraido}\n\n")
+            print(f"Texto extraído de {archivo_imagen}:\n{texto_extraido}\n")
     
-    print(f"Resultados guardados en {output_file}")
+    print(f"Resultados guardados en {archivo_salida}")
 
-if __name__ == "__main__":
+def main():
+    """Función principal que coordina la extracción de texto de imágenes en un directorio."""
     # Obtener el directorio donde se encuentra este script
-    directory_path = os.path.dirname(os.path.abspath(__file__))
+    ruta_directorio = os.path.dirname(os.path.abspath(__file__))
     
     # Nombre del archivo de salida
-    output_file = 'resultados_ocr.txt'
+    archivo_salida = 'resultados_ocr.txt'
     
-    process_images_in_directory(directory_path, output_file)
+    # Procesa las imágenes en el directorio
+    procesar_imagenes_en_directorio(ruta_directorio, archivo_salida)
+
+if __name__ == "__main__":
+    main()

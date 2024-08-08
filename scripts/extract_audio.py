@@ -1,53 +1,56 @@
 import os
 from moviepy.editor import AudioFileClip, ColorClip
 
-def audio_to_video(audio_file, output_dir):
+def convertir_audio_a_video(audio_file, output_dir, max_duration=20*60):
     try:
-        print(f"Processing file: {audio_file}")
+        print(f"Procesando archivo: {audio_file}")
         audio = AudioFileClip(audio_file)
-        duration = audio.duration
-        max_duration = 20 * 60  # 20 minutes in seconds
+        duracion = audio.duration
 
-        if duration > max_duration:
-            parts = int(duration // max_duration) + 1
-            for part in range(parts):
-                start_time = part * max_duration
-                end_time = min((part + 1) * max_duration, duration)
-                audio_part = audio.subclip(start_time, end_time)
-                
-                video = ColorClip(size=(640, 480), color=(0, 0, 0), duration=(end_time - start_time))
-                video = video.set_audio(audio_part)
-
-                output_file = os.path.join(output_dir, f"{os.path.splitext(os.path.basename(audio_file))[0]}_part{part + 1}.mp4")
-                video.write_videofile(output_file, codec='libx264', fps=24)
-                
-                print(f"Created video part {part + 1} for {audio_file} at {output_file}")
+        if duracion > max_duration:
+            dividir_y_guardar_audio_en_partes(audio, audio_file, output_dir, duracion, max_duration)
         else:
-            video = ColorClip(size=(640, 480), color=(0, 0, 0), duration=duration)
-            video = video.set_audio(audio)
-
-            output_file = os.path.join(output_dir, os.path.splitext(os.path.basename(audio_file))[0] + '.mp4')
-            video.write_videofile(output_file, codec='libx264', fps=24)
-
-            print(f"Created video for {audio_file} at {output_file}")
-
+            crear_video_con_audio(audio, audio_file, output_dir, duracion)
     except Exception as e:
-        print(f"Failed to process {audio_file}: {e}")
+        print(f"Fallo al procesar {audio_file}: {e}")
 
-def process_all_audios_in_directory(directory):
+def dividir_y_guardar_audio_en_partes(audio, audio_file, output_dir, duracion, max_duration):
+    partes = int(duracion // max_duration) + 1
+    for parte in range(partes):
+        tiempo_inicio = parte * max_duration
+        tiempo_final = min((parte + 1) * max_duration, duracion)
+        audio_parte = audio.subclip(tiempo_inicio, tiempo_final)
+        
+        video = crear_video_con_audio(audio_parte, audio_file, output_dir, tiempo_final - tiempo_inicio, parte + 1)
+        print(f"Creado video parte {parte + 1} para {audio_file} en {video}")
+
+def crear_video_con_audio(audio, audio_file, output_dir, duracion, parte=None):
+    video = ColorClip(size=(640, 480), color=(0, 0, 0), duration=duracion)
+    video = video.set_audio(audio)
+    
+    if parte is not None:
+        nombre_salida = f"{os.path.splitext(os.path.basename(audio_file))[0]}_parte{parte}.mp4"
+    else:
+        nombre_salida = f"{os.path.splitext(os.path.basename(audio_file))[0]}.mp4"
+    
+    archivo_salida = os.path.join(output_dir, nombre_salida)
+    video.write_videofile(archivo_salida, codec='libx264', fps=24)
+    return archivo_salida
+
+def procesar_audios_en_directorio(directorio):
     try:
-        print(f"Directory: {directory}")
-        for filename in os.listdir(directory):
-            print(f"Found file: {filename}")
-            if filename.lower().endswith(('.mp3', '.wav', '.ogg', '.flac', '.m4a')):
-                audio_path = os.path.join(directory, filename)
-                audio_to_video(audio_path, directory)
+        print(f"Directorio: {directorio}")
+        for nombre_archivo in os.listdir(directorio):
+            print(f"Archivo encontrado: {nombre_archivo}")
+            if nombre_archivo.lower().endswith(('.mp3', '.wav', '.ogg', '.flac', '.m4a')):
+                ruta_audio = os.path.join(directorio, nombre_archivo)
+                convertir_audio_a_video(ruta_audio, directorio)
             else:
-                print(f"Skipped file: {filename} (not an audio file)")
+                print(f"Archivo omitido: {nombre_archivo} (no es un archivo de audio)")
     except Exception as e:
-        print(f"Error processing directory {directory}: {e}")
+        print(f"Error al procesar el directorio {directorio}: {e}")
 
 if __name__ == "__main__":
-    directory = os.path.dirname(os.path.realpath(__file__))  # Get the directory of the current script
-    print(f"Script directory: {directory}")
-    process_all_audios_in_directory(directory)
+    directorio = os.path.dirname(os.path.realpath(__file__))  # Obtener el directorio del script
+    print(f"Directorio del script: {directorio}")
+    procesar_audios_en_directorio(directorio)

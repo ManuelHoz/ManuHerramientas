@@ -2,62 +2,70 @@ import os
 from PyPDF2 import PdfReader
 import genanki
 
-def extract_text_from_pdfs(pdf_directory):
-    # Recorre todos los archivos en el directorio dado
-    for filename in os.listdir(pdf_directory):
-        # Verifica si el archivo es un PDF
-        if filename.endswith('.pdf'):
-            # Construye la ruta completa al archivo PDF
-            pdf_path = os.path.join(pdf_directory, filename)
-            try:
-                # Abre el archivo PDF
-                with open(pdf_path, 'rb') as pdf_file:
-                    # Crea un objeto de lectura de PDF
-                    pdf_reader = PdfReader(pdf_file)
-                    
-                    # Verifica si el PDF se puede leer
-                    if pdf_reader.is_encrypted:
-                        print(f"El archivo {filename} está encriptado y no se puede leer.")
-                        continue
-                    
-                    # Extrae texto de cada página del PDF
-                    pdf_text = ''
-                    for page in pdf_reader.pages:
-                        pdf_text += page.extract_text()
-                    
-                    # Crea el archivo de salida de texto
-                    txt_filename = f"{os.path.splitext(filename)[0]}.txt"
-                    txt_path = os.path.join(pdf_directory, txt_filename)
-                    with open(txt_path, 'w', encoding='utf-8') as txt_file:
-                        # Escribe la instrucción inicial en el archivo de texto
-                        txt_file.write("En base al extracto del pdf de esta clase, crea un mazo anki de 40 preguntas, tanto de fórmulas, como conceptuales, con respuesta en un csv separado por ;. Este csv es para que yo lo copie y pegue y no para que lo descargue directamente.\n\n")
-                        txt_file.write(pdf_text)
-                    
-                    # Crea un archivo CSV en blanco
-                    csv_filename = f"{os.path.splitext(filename)[0]}.csv"
-                    csv_path = os.path.join(pdf_directory, csv_filename)
-                    with open(csv_path, 'w', encoding='utf-8') as csv_file:
-                        pass
-                    
-                    # Crea un mazo Anki vacío
-                    deck_name = os.path.splitext(filename)[0]
-                    my_deck = genanki.Deck(
-                        deck_id=hash(deck_name),
-                        name=deck_name
-                    )
-                    
-                    # Guarda el mazo Anki en un archivo .apkg
-                    apkg_filename = f"{deck_name}.apkg"
-                    apkg_path = os.path.join(pdf_directory, apkg_filename)
-                    genanki.Package(my_deck).write_to_file(apkg_path)
-                    
-                    print(f"Procesado: {filename}")
+def procesar_pdf(pdf_path):
+    """Procesa un archivo PDF para extraer texto y crear archivos relacionados."""
+    try:
+        with open(pdf_path, 'rb') as pdf_file:
+            pdf_reader = PdfReader(pdf_file)
             
-            except Exception as e:
-                print(f"Error al procesar el archivo {filename}: {e}")
+            if pdf_reader.is_encrypted:
+                print(f"El archivo {os.path.basename(pdf_path)} está encriptado y no se puede leer.")
+                return
 
-# Directorio donde están los archivos PDF y donde se ejecuta el programa
-pdf_directory = os.path.dirname(os.path.abspath(__file__))
+            texto_extraido = extraer_texto_de_pdf(pdf_reader)
+            crear_archivo_texto(pdf_path, texto_extraido)
+            crear_archivo_csv_vacio(pdf_path)
+            crear_mazo_anki_vacio(pdf_path)
+            
+            print(f"Procesado: {os.path.basename(pdf_path)}")
+    
+    except Exception as e:
+        print(f"Error al procesar el archivo {os.path.basename(pdf_path)}: {e}")
 
-# Llama a la función para extraer el texto de los PDFs
-extract_text_from_pdfs(pdf_directory)
+def extraer_texto_de_pdf(pdf_reader):
+    """Extrae el texto de cada página de un archivo PDF."""
+    texto = ''
+    for pagina in pdf_reader.pages:
+        texto += pagina.extract_text()
+    return texto
+
+def crear_archivo_texto(pdf_path, texto):
+    """Crea un archivo de texto con el contenido extraído del PDF."""
+    nombre_txt = f"{os.path.splitext(os.path.basename(pdf_path))[0]}.txt"
+    ruta_txt = os.path.join(os.path.dirname(pdf_path), nombre_txt)
+    
+    with open(ruta_txt, 'w', encoding='utf-8') as txt_file:
+        txt_file.write("En base al extracto del pdf de esta clase, crea un mazo anki de 40 preguntas, tanto de fórmulas, como conceptuales, con respuesta en un csv separado por ;. Este csv es para que yo lo copie y pegue y no para que lo descargue directamente.\n\n")
+        txt_file.write(texto)
+
+def crear_archivo_csv_vacio(pdf_path):
+    """Crea un archivo CSV vacío en el mismo directorio que el PDF."""
+    nombre_csv = f"{os.path.splitext(os.path.basename(pdf_path))[0]}.csv"
+    ruta_csv = os.path.join(os.path.dirname(pdf_path), nombre_csv)
+    
+    with open(ruta_csv, 'w', encoding='utf-8') as csv_file:
+        pass
+
+def crear_mazo_anki_vacio(pdf_path):
+    """Crea un mazo Anki vacío y lo guarda en un archivo .apkg."""
+    nombre_mazo = os.path.splitext(os.path.basename(pdf_path))[0]
+    mazo = genanki.Deck(
+        deck_id=hash(nombre_mazo),
+        name=nombre_mazo
+    )
+    
+    nombre_apkg = f"{nombre_mazo}.apkg"
+    ruta_apkg = os.path.join(os.path.dirname(pdf_path), nombre_apkg)
+    genanki.Package(mazo).write_to_file(ruta_apkg)
+
+def extraer_texto_de_pdfs_en_directorio(directorio_pdfs):
+    """Recorre todos los archivos PDF en un directorio y los procesa."""
+    for nombre_archivo in os.listdir(directorio_pdfs):
+        if nombre_archivo.endswith('.pdf'):
+            ruta_pdf = os.path.join(directorio_pdfs, nombre_archivo)
+            procesar_pdf(ruta_pdf)
+
+if __name__ == "__main__":
+    directorio_pdfs = os.path.dirname(os.path.abspath(__file__))  # Obtener el directorio actual
+    extraer_texto_de_pdfs_en_directorio(directorio_pdfs)
+

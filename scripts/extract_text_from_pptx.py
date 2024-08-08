@@ -1,31 +1,35 @@
 import os
 from pptx import Presentation
 
-def extract_text_from_pptx(pptx_path):
-    prs = Presentation(pptx_path)
-    text_runs = []
+def extraer_texto_de_pptx(ruta_pptx):
+    """Extrae el texto de todas las diapositivas de una presentación PowerPoint."""
+    presentacion = Presentation(ruta_pptx)
+    textos = []
 
-    for slide in prs.slides:
-        for shape in slide.shapes:
-            if hasattr(shape, "text"):
-                text_runs.append(shape.text)
+    for diapositiva in presentacion.slides:
+        for forma in diapositiva.shapes:
+            if hasattr(forma, "text"):
+                textos.append(forma.text)
 
-    return "\n".join(text_runs)
+    return "\n".join(textos)
 
-def save_text_to_file(text, file_path):
-    with open(file_path, 'w', encoding='utf-8') as file:
-        file.write(text)
+def guardar_texto_en_archivo(texto, ruta_archivo):
+    """Guarda el texto en un archivo de texto."""
+    with open(ruta_archivo, 'w', encoding='utf-8') as archivo:
+        archivo.write(texto)
 
-def extract_text_from_all_pptx_in_directory(directory):
-    for filename in os.listdir(directory):
-        if filename.endswith(".pptx"):
-            pptx_path = os.path.join(directory, filename)
-            text = extract_text_from_pptx(pptx_path)
-            txt_filename = os.path.splitext(filename)[0] + ".txt"
-            txt_path = os.path.join(directory, txt_filename)
-            save_text_to_file(text, txt_path)
-            print(f"Extracted text from {filename} to {txt_filename}")
+def extraer_texto_de_todas_las_pptx_en_directorio(directorio):
+    """Extrae el texto de todas las presentaciones PowerPoint en un directorio y las guarda en archivos de texto."""
+    for nombre_archivo in os.listdir(directorio):
+        if nombre_archivo.endswith(".pptx"):
+            ruta_pptx = os.path.join(directorio, nombre_archivo)
+            texto = extraer_texto_de_pptx(ruta_pptx)
+            nombre_txt = os.path.splitext(nombre_archivo)[0] + ".txt"
+            ruta_txt = os.path.join(directorio, nombre_txt)
+            guardar_texto_en_archivo(texto, ruta_txt)
+            print(f"Texto extraído de {nombre_archivo} y guardado en {nombre_txt}")
 
 if __name__ == "__main__":
-    directory = os.getcwd()  # Current directory
-    extract_text_from_all_pptx_in_directory(directory)
+    directorio = os.getcwd()  # Obtener el directorio actual
+    extraer_texto_de_todas_las_pptx_en_directorio(directorio)
+
