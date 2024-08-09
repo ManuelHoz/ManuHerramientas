@@ -7,7 +7,7 @@ class Controlador:
         self.vista = vista
 
         self.vista.boton_seleccionar_directorio.config(command=self.seleccionar_directorio)
-        self.vista.boton_añadir_archivo.config(command=self.añadir_archivo)
+        self.vista.boton_anadir_archivo.config(command=self.anadir_archivo)  # Cambiado para coincidir con el nombre en la vista
         self.vista.boton_agregar_texto.config(command=self.agregar_texto)
         self.vista.boton_combinar.config(command=self.combinar_archivos)
         self.vista.boton_copiar.config(command=self.copiar_portapapeles)
@@ -16,20 +16,41 @@ class Controlador:
         self.widgets_archivos = {}
         self.mostrando_ruta_completa = {}
 
+
     def seleccionar_directorio(self):
         directorio_inicial = os.getcwd()
         directorio = filedialog.askdirectory(initialdir=directorio_inicial)
         if directorio:
-            archivos = [os.path.join(directorio, f) for f in os.listdir(directorio) if f.endswith('.py')]
-            for archivo in archivos:
-                self.modelo.agregar_archivo(archivo)
-            self.actualizar_listbox()
+            try:
+                tipos_archivo = self.vista.get_tipos_archivo()
+                archivos = []
+                for tipo in tipos_archivo:
+                    # Para manejar patrones como *.py, *.txt, etc.
+                    archivos.extend([os.path.join(directorio, f) for f in os.listdir(directorio) if f.endswith(tipo)])
+                for archivo in archivos:
+                    if os.path.exists(archivo):
+                        self.modelo.agregar_archivo(archivo)
+                self.actualizar_listbox()
+            except Exception as e:
+                messagebox.showerror("Error", f"No se pudo acceder al directorio o a los archivos: {str(e)}")
 
-    def añadir_archivo(self):
-        archivo = filedialog.askopenfilename(filetypes=[("Archivos Python", "*.py")], initialdir=os.getcwd())
+
+
+    def anadir_archivo(self):
+        tipos_archivo = self.vista.get_tipos_archivo()
+        tipos_formato = [f"Archivos ({tipo})|{tipo}" for tipo in tipos_archivo]
+        tipos_formato_str = " ".join(tipos_formato)
+        
+        archivo = filedialog.askopenfilenames(
+            title="Seleccionar Archivo(s)",
+            filetypes=[(tipos_formato_str, tipos_archivo)]
+        )
+
         if archivo:
-            self.modelo.agregar_archivo(archivo)
-            self.actualizar_listbox()
+            for file in archivo:
+                self.modelo.agregar_archivo(file)
+                self.vista.crear_widget_archivo(file, eliminar_func=lambda: self.eliminar_archivo(file), mostrar_ruta_func=lambda: self.mostrar_ruta(file))
+
 
     def agregar_texto(self):
         opcion = messagebox.askyesno("Texto de Cabecera", "¿Deseas escribir el texto manualmente?")
@@ -96,3 +117,7 @@ class Controlador:
         self.vista.ventana.clipboard_clear()
         self.vista.ventana.clipboard_append(contenido_combinado)
         messagebox.showinfo("Copiado", "El contenido combinado ha sido copiado al portapapeles.")
+        self.vista.frame_principal.dnd_bind('<<Drop>>', self.archivos_arrastrados)
+        
+        self.widgets_archivos = {}
+        self.mostrando_ruta_completa = {}
