@@ -1,13 +1,17 @@
 import os
 from tkinter import filedialog, messagebox, simpledialog
+from gestor_archivos import GestorArchivos
+from gestor_dialogos import GestorDialogos
 
 class Controlador:
     def __init__(self, modelo, vista):
         self.modelo = modelo
         self.vista = vista
+        self.gestor_archivos = GestorArchivos()
+        self.gestor_dialogos = GestorDialogos()
 
         self.vista.boton_seleccionar_directorio.config(command=self.seleccionar_directorio)
-        self.vista.boton_anadir_archivo.config(command=self.anadir_archivo)  # Cambiado para coincidir con el nombre en la vista
+        self.vista.boton_anadir_archivo.config(command=self.anadir_archivo)
         self.vista.boton_agregar_texto.config(command=self.agregar_texto)
         self.vista.boton_combinar.config(command=self.combinar_archivos)
         self.vista.boton_copiar.config(command=self.copiar_portapapeles)
@@ -16,17 +20,12 @@ class Controlador:
         self.widgets_archivos = {}
         self.mostrando_ruta_completa = {}
 
-
     def seleccionar_directorio(self):
-        directorio_inicial = os.getcwd()
-        directorio = filedialog.askdirectory(initialdir=directorio_inicial)
+        directorio = self.gestor_dialogos.seleccionar_directorio()
         if directorio:
             try:
                 tipos_archivo = self.vista.get_tipos_archivo()
-                archivos = []
-                for tipo in tipos_archivo:
-                    # Para manejar patrones como *.py, *.txt, etc.
-                    archivos.extend([os.path.join(directorio, f) for f in os.listdir(directorio) if f.endswith(tipo)])
+                archivos = self.gestor_archivos.obtener_archivos_directorio(directorio, tipos_archivo)
                 for archivo in archivos:
                     if os.path.exists(archivo):
                         self.modelo.agregar_archivo(archivo)
@@ -34,34 +33,15 @@ class Controlador:
             except Exception as e:
                 messagebox.showerror("Error", f"No se pudo acceder al directorio o a los archivos: {str(e)}")
 
-
-
     def anadir_archivo(self):
-        tipos_archivo = self.vista.get_tipos_archivo()
-        tipos_formato = [f"Archivos ({tipo})|{tipo}" for tipo in tipos_archivo]
-        tipos_formato_str = " ".join(tipos_formato)
-        
-        archivo = filedialog.askopenfilenames(
-            title="Seleccionar Archivo(s)",
-            filetypes=[(tipos_formato_str, tipos_archivo)]
-        )
-
-        if archivo:
-            for file in archivo:
-                self.modelo.agregar_archivo(file)
-                self.vista.crear_widget_archivo(file, eliminar_func=lambda: self.eliminar_archivo(file), mostrar_ruta_func=lambda: self.mostrar_ruta(file))
-
+        archivos = self.gestor_dialogos.seleccionar_archivos(self.vista.get_tipos_archivo())
+        if archivos:
+            for archivo in archivos:
+                self.modelo.agregar_archivo(archivo)
+                self.vista.crear_widget_archivo(archivo, eliminar_func=lambda: self.eliminar_archivo(archivo), mostrar_ruta_func=lambda: self.mostrar_ruta(archivo))
 
     def agregar_texto(self):
-        opcion = messagebox.askyesno("Texto de Cabecera", "¿Deseas escribir el texto manualmente?")
-        if opcion:
-            texto_cabecera = simpledialog.askstring("Texto de Cabecera", "Introduce el texto de cabecera:")
-        else:
-            archivo_texto = filedialog.askopenfilename(filetypes=[("Archivos de Texto", "*.txt")], initialdir=os.getcwd())
-            if archivo_texto:
-                with open(archivo_texto, 'r') as archivo:
-                    texto_cabecera = archivo.read()
-
+        texto_cabecera = self.gestor_dialogos.obtener_texto_cabecera()
         self.modelo.agregar_texto_cabecera(texto_cabecera)
         self.mostrar_texto_cabecera()
 
@@ -107,7 +87,7 @@ class Controlador:
         self.actualizar_listbox()
 
     def combinar_archivos(self):
-        nombre_archivo_salida = simpledialog.askstring("Nombre del archivo", "Introduce el nombre del archivo de salida:")
+        nombre_archivo_salida = self.gestor_dialogos.obtener_nombre_archivo_salida()
         if nombre_archivo_salida:
             self.modelo.combinar_archivos(nombre_archivo_salida)
             messagebox.showinfo("Completado", f"Archivos combinados en {nombre_archivo_salida}")
@@ -117,7 +97,3 @@ class Controlador:
         self.vista.ventana.clipboard_clear()
         self.vista.ventana.clipboard_append(contenido_combinado)
         messagebox.showinfo("Copiado", "El contenido combinado ha sido copiado al portapapeles.")
-        self.vista.frame_principal.dnd_bind('<<Drop>>', self.archivos_arrastrados)
-        
-        self.widgets_archivos = {}
-        self.mostrando_ruta_completa = {}
