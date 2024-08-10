@@ -95,3 +95,19 @@ class Vista:
     def limpiar_listbox(self):
         for widget in self.frame_canvas.winfo_children():
             widget.destroy()
+
+    def crear_widget_archivo(self, archivo, eliminar_func, mostrar_ruta_func, modificar_cabecera_func):
+        frame_archivo = tk.Frame(self.frame_canvas, bg="lightgray", padx=10, pady=5)
+        frame_archivo.pack(fill=tk.X, pady=2)
+
+        label_archivo = tk.Label(frame_archivo, text=os.path.basename(archivo), anchor="w", font=("Helvetica Neue", 10, "bold"), bg="lightgray")
+        label_archivo.pack(side=tk.LEFT, fill=tk.X, expand=True)
+        label_archivo.bind("<Button-1>", lambda e: mostrar_ruta_func())
+
+        boton_modificar_cabecera = ttk.Button(frame_archivo, text="Modificar Cabecera", command=modificar_cabecera_func, bootstyle="info", padding=(5,2))
+        boton_modificar_cabecera.pack(side=tk.RIGHT)
+
+        boton_eliminar = ttk.Button(frame_archivo, text="Eliminar", command=eliminar_func, bootstyle="danger", padding=(5,2))
+        boton_eliminar.pack(side=tk.RIGHT)
+
+        return frame_archivo

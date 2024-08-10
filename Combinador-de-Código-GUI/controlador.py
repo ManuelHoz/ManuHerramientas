@@ -38,7 +38,22 @@ class Controlador:
         if archivos:
             for archivo in archivos:
                 self.modelo.agregar_archivo(archivo)
-                self.vista.crear_widget_archivo(archivo, eliminar_func=lambda: self.eliminar_archivo(archivo), mostrar_ruta_func=lambda: self.mostrar_ruta(archivo))
+                self.vista.crear_widget_archivo(
+                    archivo, 
+                    eliminar_func=lambda: self.eliminar_archivo(archivo), 
+                    mostrar_ruta_func=lambda: self.mostrar_ruta(archivo),
+                    modificar_cabecera_func=lambda: self.modificar_cabecera(archivo)
+                )
+
+    def modificar_cabecera(self, archivo):
+        texto_cabecera_actual = self.modelo.obtener_texto_cabecera_archivo(archivo)
+        print(f"Texto de cabecera actual para {archivo}: {texto_cabecera_actual}")  # Depuración
+        nuevo_texto_cabecera = self.gestor_dialogos.obtener_texto_cabecera_inicial(texto_cabecera_actual)
+        if nuevo_texto_cabecera is not None:
+            self.modelo.establecer_texto_cabecera_archivo(archivo, nuevo_texto_cabecera)
+            print(f"Nuevo texto de cabecera para {archivo}: {nuevo_texto_cabecera}")  # Depuración
+            self.actualizar_listbox()
+
 
     def agregar_texto(self):
         texto_cabecera = self.gestor_dialogos.obtener_texto_cabecera()
@@ -74,11 +89,13 @@ class Controlador:
         for archivo in self.modelo.obtener_archivos():
             frame_archivo = self.vista.crear_widget_archivo(
                 archivo, 
-                lambda archivo=archivo: self.eliminar_archivo(archivo),
-                lambda archivo=archivo: self.mostrar_ruta_completa(archivo)
+                eliminar_func=lambda archivo=archivo: self.eliminar_archivo(archivo),
+                mostrar_ruta_func=lambda archivo=archivo: self.mostrar_ruta_completa(archivo),
+                modificar_cabecera_func=lambda archivo=archivo: self.modificar_cabecera(archivo)  # Agregar este argumento
             )
             self.widgets_archivos[archivo] = frame_archivo
             self.mostrando_ruta_completa[archivo] = False
+
 
     def archivos_arrastrados(self, event):
         archivos = self.vista.ventana.tk.splitlist(event.data)
@@ -91,9 +108,33 @@ class Controlador:
         if nombre_archivo_salida:
             self.modelo.combinar_archivos(nombre_archivo_salida)
             messagebox.showinfo("Completado", f"Archivos combinados en {nombre_archivo_salida}")
-
     def copiar_portapapeles(self):
-        contenido_combinado = self.modelo.copiar_portapapeles()
+        # Inicializar contenido combinado
+        contenido_combinado = ""
+
+        # Agregar la cabecera general si existe
+        texto_cabecera = self.modelo.obtener_texto_cabecera()
+        if texto_cabecera:
+            contenido_combinado += texto_cabecera + '\n\n'
+            print(f"Cabecera general copiada: {texto_cabecera}")  # Depuración
+
+        # Recorrer cada archivo y agregar su contenido y cabecera individual si existe
+        for archivo in self.modelo.obtener_archivos():
+            contenido_combinado += f'=== {os.path.basename(archivo)} ===\n'
+
+            cabecera_individual = self.modelo.obtener_texto_cabecera_archivo(archivo)
+            if cabecera_individual:
+                contenido_combinado += cabecera_individual + '\n'
+                print(f"Cabecera individual para {archivo} copiada: {cabecera_individual}")  # Depuración
+
+            # Leer el contenido del archivo y agregarlo
+            with open(archivo, 'r') as archivo_file:
+                contenido_archivo = archivo_file.read()
+                contenido_combinado += contenido_archivo + '\n\n'
+                print(f"Contenido del archivo {archivo} copiado")  # Depuración
+
+        # Copiar el contenido combinado al portapapeles
         self.vista.ventana.clipboard_clear()
         self.vista.ventana.clipboard_append(contenido_combinado)
         messagebox.showinfo("Copiado", "El contenido combinado ha sido copiado al portapapeles.")
+        print("Contenido combinado copiado al portapapeles.")  # Depuración

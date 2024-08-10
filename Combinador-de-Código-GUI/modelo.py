@@ -3,10 +3,17 @@ import os
 class Modelo:
     def __init__(self):
         self.lista_archivos = []
-        self.texto_cabecera = ""
+        self.textos_cabecera = {}
 
     def agregar_archivo(self, archivo):
         self.lista_archivos.append(archivo)
+        self.textos_cabecera[archivo] = ""
+
+    def obtener_texto_cabecera_archivo(self, archivo):
+        return self.textos_cabecera.get(archivo, "")
+
+    def establecer_texto_cabecera_archivo(self, archivo, texto):
+        self.textos_cabecera[archivo] = texto
 
     def eliminar_archivo(self, archivo):
         if archivo in self.lista_archivos:
@@ -25,11 +32,23 @@ class Modelo:
         with open(nombre_archivo_salida, 'w') as archivo_salida:
             if self.texto_cabecera:
                 archivo_salida.write(self.texto_cabecera + '\n\n')
+                print(f"Escribiendo cabecera general: {self.texto_cabecera}")  # Depuración
+
             for archivo in self.lista_archivos:
                 archivo_salida.write(f'=== {os.path.basename(archivo)} ===\n')
+                cabecera_individual = self.textos_cabecera.get(archivo, "")
+                if cabecera_individual:
+                    archivo_salida.write(cabecera_individual + '\n')
+                    print(f"Escribiendo cabecera individual para {archivo}: {cabecera_individual}")  # Depuración
+
                 with open(archivo, 'r') as archivo_file:
-                    archivo_salida.write(archivo_file.read())
+                    contenido = archivo_file.read()
+                    archivo_salida.write(contenido)
                     archivo_salida.write('\n\n')
+                    print(f"Escribiendo contenido del archivo {archivo}")  # Depuración
+
+
+    
     
     def copiar_portapapeles(self):
         contenido_combinado = self.texto_cabecera + '\n\n' if self.texto_cabecera else ""

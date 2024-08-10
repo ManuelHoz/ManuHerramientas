@@ -27,3 +27,6 @@ class GestorDialogos:
 
     def obtener_nombre_archivo_salida(self):
         return simpledialog.askstring("Nombre del archivo", "Introduce el nombre del archivo de salida:")
+
+    def obtener_texto_cabecera_inicial(self, texto_actual=""):
+        return simpledialog.askstring("Modificar Texto de Cabecera", "Introduce el nuevo texto de cabecera:", initialvalue=texto_actual)
