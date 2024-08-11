@@ -1,6 +1,5 @@
 import os
 from PyPDF2 import PdfReader
-import genanki
 
 def procesar_pdf(pdf_path):
     """Procesa un archivo PDF para extraer texto y crear archivos relacionados."""
@@ -45,18 +44,6 @@ def crear_archivo_csv_vacio(pdf_path):
     
     with open(ruta_csv, 'w', encoding='utf-8') as csv_file:
         pass
-
-def crear_mazo_anki_vacio(pdf_path):
-    """Crea un mazo Anki vacío y lo guarda en un archivo .apkg."""
-    nombre_mazo = os.path.splitext(os.path.basename(pdf_path))[0]
-    mazo = genanki.Deck(
-        deck_id=hash(nombre_mazo),
-        name=nombre_mazo
-    )
-    
-    nombre_apkg = f"{nombre_mazo}.apkg"
-    ruta_apkg = os.path.join(os.path.dirname(pdf_path), nombre_apkg)
-    genanki.Package(mazo).write_to_file(ruta_apkg)
 
 def extraer_texto_de_pdfs_en_directorio(directorio_pdfs):
     """Recorre todos los archivos PDF en un directorio y los procesa."""

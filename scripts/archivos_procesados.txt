@@ -1,0 +1,2 @@
+C:/Users/manue/Documents/USM 2024 S2/ramos/TEL252 - Criptografía y Seguridad en la Información/Documento complementario/Handbook of Applied Cryptography\pdf_extraidos\Chapter 2 - Mathematics Background .txt
+C:/Users/manue/Documents/USM 2024 S2/ramos/TEL252 - Criptografía y Seguridad en la Información/Documento complementario/Handbook of Applied Cryptography\pdf_extraidos\Chapter 3 - Number-Theoretic Reference Problems.txt

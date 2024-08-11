@@ -1,0 +1,365 @@
+Departamento de F´ ısica
+Casa CentralF´ ısica General 4 - Certamen 1
+(viernes 1 de septiembre)
+Instrucciones Generales
+•Dispone de 90 minutos. Cada pregunta vale 3 puntos.
+•No est´ an permitidas las salidas al ba˜ no.
+•No pueden usarse apuntes ni textos, pero s´ ı est´ a permitido el uso de calculadora cient´ ıfica simple1.
+•Dispositivos electr´ onicos deben estar APAGADOS y GUARDADOS.
+•Justifique claramente todos los pasos en su desarrollo, sea claro para evitar ambig¨ uedades.
+•La comprensi´ on de lectura es parte de la evaluaci´ on. No se responder´ an preguntas durante el
+certamen. Si encuentra ambig¨ uedades en una pregunta, anote claramente lo que deba
+suponer y resuelva.
+Constantes fundamentales:
+ε0≈8,85×10−12C2
+N m2
+; µ0= 4π×10−7N
+A2
+;|e| ≈1,6×10−19[C]
+Ecuaciones de Maxwell:
+I
+⃗E·d⃗S=Qint
+ε0;I
+⃗B·d⃗S= 0 ;I
+⃗E·d⃗ℓ=−d
+dtZ
+⃗E·d⃗S ;I
+⃗B·d⃗ℓ=µ0I+µ0ε0d
+dtZ
+⃗E·d⃗S
+⃗∇ ·⃗E=ρ
+ε0; ⃗∇ ·⃗B= 0 ; ⃗∇ × ⃗E=−∂⃗E
+∂t; ⃗∇ × ⃗B=µ0⃗J+µ0ε0∂⃗E
+∂t
+Sea⃗F→⃗F(x, y, z, t ) un campo vectorial no nulo:
+⃗∇ ·⃗F=∂Fx
+∂x+∂Fy
+∂y+∂Fz
+∂z; ⃗∇ × ⃗F=∂Fz
+∂y−∂Fy
+∂z
+ˆi−∂Fz
+∂x−∂Fx
+∂z
+ˆj+∂Fy
+∂x−∂Fx
+∂y
+ˆk
+Ondas e.m. en 1 dimensi´ on:
+∂2f(x, t)
+∂x2=1
+c2∂2f(x, t)
+∂t2;sol.:f(x±ct) ; c=1√µ0ε0
+k=2π
+λ;ω=2π
+T= 2πf;ω=kc;c=λ
+T=λf;E=cB;Uem=ε0E2
+2+B2
+2µ0=ε0E2;Isenoidal =1
+2cε0E2
+´Indice de refracci´ on:
+n≡c
+cm;naire≈1,00; nagua= 1,33; nvidrio =ncristal = 1,50 (luz verde) .
+Ley de Snell: n1sin (ϑ1) =n2sin (ϑ2).
+Interferencia de 2 fuentes lejanas: Iint.=I0cos2∆φ
+2
+.
+Difracci´ on: En rendija: Idif.=I0
+sin∆φ
+2
+∆φ
+2
+2
+. En apertura circular: ϑ1er.m´ ın.= 1,22λ
+D.
+1NO programable.
+Segundo Semestre 2023 -1- FIS140Departamento de F´ ısica
+Casa CentralF´ ısica General 4 - Certamen 1
+(viernes 1 de septiembre)
+Nombre: Rol: Paralelo:
+1.- En una instalaci´ on experimental de comunicaci´ on
+inal´ ambrica, una antena transmisora Subicada en y= 0
+emite una onda electromagn´ etica (OEM) sinusoidal en to-
+das direcciones. Si un detector ubicado en y=d, mide un
+valor Ipara la intensidad (valor medio) de la OEM, deter-
+mine:
+a)La potencia emitida por la antena transmisora.
+b)La intensidad de la OEM en un segundo receptor ubicado en y= 2d.
+c)Encuentre la amplitud del campo el´ ectrico en y= 2d. (Suponga que la distancia a la fuente es grande, de modo
+que el frente de onda sobre el receptor es pr´ acticamente plano.) Discuta sobre la(s) posible(s) orientaci´ on(es)
+del vector de campo el´ ectrico.
+Segundo Semestre 2023 -2- FIS140Departamento de F´ ısica
+Casa CentralF´ ısica General 4 - Certamen 1
+(viernes 1 de septiembre)
+Nombre: Rol: Paralelo:
+2.- Un haz (rayo) de luz l´ aser viaja por el aire naire= 1,00
+e incide sobre la superficie del agua ( nagua= 1,33) contenida
+en un recipiente, como se indica en la figura. El haz incide
+con un ´ angulo de 45◦respecto a la normal. El fondo plano
+del recipiente es reflectante y se encuentra a una distancia h=
+5 [cm] de la superficie. Luego de impactar el fondo el rayo
+emerge del agua.
+(Superficie reflectante)
+a)Dibuje un trazado cualitativo del trayecto del haz de l´ aser en el agua, y en el aire a la salida del recipiente.
+b)Calcule la distancia horizontal xen la superficie del agua a la cual emerge el rayo del agua desde el punto de
+incidencia.
+c)Identifique si hay un ´ angulo de incidencia, ϑi<π
+2, para el cual el rayo especular que se refleja en el fondo no
+emerge por sufrir una reflexi´ on total interna cuando llega a la superficie del agua.
+Segundo Semestre 2023 -3- FIS140Departamento de F´ ısica
+Casa CentralF´ ısica General 4 - Certamen 1
+(viernes 1 de septiembre)
+Nombre: Rol: Paralelo:
+3.- Dos fuentes de ondas electromagn´ eticas, S1yS2, que emiten se˜ nales monocrom´ aticas coherentes y en fase,
+est´ an separadas en una distancia d. La radiaci´ on de las fuentes incide sobre una pantalla distante, ubicada a una
+distancia L≫d, como se indica en la figura adjunta.
+(imagen NO esta a escala)
+a)Si los primeros m´ ınimos laterales medidos a partir del punto central est´ an en y=±D, determine la longitud
+de onda de las se˜ nales, en t´ erminos de d,LyD.
+b)Indique c´ omo deber´ ıa cambiar la separaci´ on dentre las fuentes para que el ancho del patr´ on de intensidad
+(2D) se reduzca a la mitad.
+c)Si se agrega una fase δ(positiva) en la fuente S2, explique cu´ al ser´ ıa el m´ ınimo valor de esta fase para que la
+intensidad fuese cero en la posici´ on y= 0 de la pantalla.
+Segundo Semestre 2023 -4- FIS140Departamento de F´ ısica
+Casa CentralF´ ısica General 4 - Certamen 1
+(viernes 1 de septiembre)
+Soluciones Certamen 1
+Problema 1. (a) La potencia emitida por la antena viene dado por:
+P=IA=I4πd2= 2πcε0E2d2✓
+(b)A partir de la conservaci´ on de la energ´ ıa, la intensidad de la OEM si la distancia desde la antena transmisora
+hasta el receptor cambia a 2 dser´ a:
+Pd1=P2
+4πd2I1= 4 π(2d)2I2⇒I2=I1
+4✓
+(c)En la aproximaci´ on de campo lejano, la OEM se puede modelar como una onda plana, luego:
+I2=1
+2cε0E2⇒E=r
+2I2
+ε0c2=r
+I1
+2cε0✓
+El campo el´ ectrico es transversal a la direcci´ on de propagaci´ on de la OEM. Sin m´ as informaci´ on respecto de la
+antena que genera el campo, ´ este puede tener una orientaci´ on arbitraria en el plano XZ.•
+Anexo: R´ ubrica de asignaci´ on de puntajes Problema 1.
+Pregunta 0 1 2 3
+a¡nada!,
+completamente
+err´ oneo, o bien
+responde sin
+argumentar—Presenta trabajo pero con
+errores menores (´ area del
+cascar´ on esf´ erico no es
+correcto)Responde correctamente
+lo solicitado
+b¡nada!,
+completamente
+err´ oneo, o bien
+responde sin
+argumentarPresenta trabajo pero con
+errores importantes
+(asume linealidad en la
+ca´ ıda de la intensidad con
+la distancia u otra
+alternativa incorrecta)—Responde correctamente
+lo solicitado
+c¡nada!,
+completamente
+err´ oneo, o bien
+responde sin
+argumentarPresenta trabajo pero con
+errores (realiza el c´ alculo
+del campo el´ ectrico de
+forma parcial, o bien solo
+indica las direcciones de
+oscilaci´ on del campo
+el´ ectrico en forma
+correcta)Presenta trabajo pero con
+errores menores (c´ alculo
+de campo el´ ectrico es
+correcto, no indica
+direcci´ on de oscilaci´ on en
+el plano o bien identifica
+una sola direcci´ on como
+la adecuada. (por ej: x o
+z )Responde correctamente
+solicitado. Detalla el
+campo el´ ectrico correcto e
+identifica expl´ ıcitamente
+que las direcciones
+posibles son todas
+aquellas en el plano
+perpendicular a la
+direcci´ on de propagaci´ on .
+Segundo Semestre 2023 -5- FIS140Departamento de F´ ısica
+Casa CentralF´ ısica General 4 - Certamen 1
+(viernes 1 de septiembre)
+Problema 2. (a) Esquem´ aticamente tenemos:
+(Superficie reflectante)
+(b)A partir de la Ley de Snell,
+n1sin (ϑi) =n2sin (ϑt) =⇒sin (ϑt) =1
+1,33√
+2
+Puesto que el ´ angulo de transmisi´ on es el mismo que se refleja en la base del recipiente, geom´ etricamente:
+tan (ϑt) =x/2
+h=⇒x= 2htan (ϑt) = 2 hsin (ϑ2)p
+1−sin2(ϑt)= 6,277...≈6,3 [cm]✓
+(c)No hay ´ angulo de incidencia que permita que el rayo se refleje internamente.
+La situaci´ on l´ ımite ocurre cuando un rayo proveniente del fondo, se desv´ ıa en 90 °en la interfase agua/aire :
+naguasinϕ=nairesinπ
+2
+=⇒ϕ= sin−11
+1,33
+= 48,753...≈49◦
+donde se ha denotado a ϕcomo el ´ angulo de incidencia desde el agua a la superficie. Por la construcci´ on
+geom´ etrica este ´ angulo es igual al ´ angulo del rayo refractado en el pto de ingreso al agua. La simetr´ ıa de la situaci´ on
+al aplicar la ley de Snell en el pto de ingreso, indica que el rayo que ingresa deber´ ıa entrar paralelo a la superficie,
+por tanto, no entra al agua. De esta forma si un rayo ingresa, eventualmente, siempre emerger´ a desde el fondo si
+este es reflectante. ✓
+Segundo Semestre 2023 -6- FIS140Departamento de F´ ısica
+Casa CentralF´ ısica General 4 - Certamen 1
+(viernes 1 de septiembre)
+Anexo: R´ ubrica de asignaci´ on de puntajes Problema 2.
+Pregunta 0 1 2 3
+a¡nada!,
+completamente
+err´ oneo, o bien
+responde sin
+argumentarPresenta trabajo pero con
+errores. Identifica, sin
+embargo que los trazados
+son rectos en el agua y el
+aire.—Identifica correctamente
+que el rayo incidente se
+apega a la normal al
+ingresar al agua.
+Cualitativamente el
+´ angulo de incidencia y de
+reflexi´ on son iguales en el
+fondo. El rayo de salida
+se separa de la normal
+b¡nada!,
+completamente
+err´ oneo, o bien
+responde sin
+argumentarSolo aplica la ley de Snell
+en el pto de ingreso al
+agua, No relaciona el
+´ angulo de refracci´ on con
+los ´ angulos del rayo en el
+fondo del recipiente.Aplica bien la ley de
+Snell, identifica la
+relaci´ on de ´ angulos pero
+da un valor de la
+distancia incorrecta.Responde correctamente
+al valor num´ erico
+solicitado
+c¡nada!,
+completamente
+err´ oneo, o bien
+responde sin
+argumentarIdentifica correctamente
+el caso l´ ımite en que el
+rayo ”emergente” tiene
+un ´ angulo de refracci´ on
+de 90 °. Pero no usa esta
+informaci´ on de manera
+correcta.Identifica el caso l´ ımite
+del rayo emergente. Se
+percata que la situaci´ on
+es sim´ etrica en el pto. de
+ingreso, pero no indica
+que no es posible que un
+rayo que ingresa desde el
+aire pueda tener una
+reflexi´ on interna total.Indica expl´ ıcitamente que
+no hay ´ angulo de
+incidencia posible para
+que el rayo no emerja
+desde el agua.
+Segundo Semestre 2023 -7- FIS140Departamento de F´ ısica
+Casa CentralF´ ısica General 4 - Certamen 1
+(viernes 1 de septiembre)
+Problema 3. (a) Sean φ1yφ2las fases con las cuales llegan las ondas a + D:
+φ1=kr1−ωt;φ2=kr2−ωt
+La diferencia de fase de las ondas viene dada por: ∆ φ=φ2−φ1=k∆r=kdsin (ϑ). Puesto que ϑ≪1⇒
+sin (ϑ)≈tan (ϑ) =D
+L. Por lo tanto:
+kdsin (ϑ) = (2 n−1)π;n= 1 (primer m´ ınimo)2π
+λ
+dD
+L=π=⇒λ=2dD
+L
+(b)Buscamos un nuevo m´ ınimo tal que D′= 0,5D, es este modo la nueva distancia d′ser´ a:
+d′=1
+0.5λL
+2D=⇒d′
+d= 2
+Por lo tanto, debemos aumentar la distancia entre las fuentes al doble ✓
+(c)Para el punto ubicado en y= 0, ∆ r= 0, la diferencia de fase inicial es 0. Al agregar una fase adicional δ, la
+nueva diferencia de fases ser´ a ∆ φ=δ. Puesto que ahora buscamos un m´ ınimo de intensidad en el centro:
+∆φ=δ=π✓•
+Segundo Semestre 2023 -8- FIS140Departamento de F´ ısica
+Casa CentralF´ ısica General 4 - Certamen 1
+(viernes 1 de septiembre)
+Anexo: R´ ubrica de asignaci´ on de puntajes Problema 3.
+Pregunta 0 1 2 3
+a¡nada!,
+completamente
+err´ oneoIdentifica correctamente
+la fase de la excitaci´ on
+proveniente de cada
+fuente en la pantalla.
+Pero no aplica
+correctamente la
+condici´ on de m´ ınimo de
+intensidad.Condici´ on de m´ ınimo es
+correcta pero no produce
+un valor correcto para λ)Identifica correctamente
+la fase de la excitaci´ on
+proveniente de cada
+fuente en la pantalla.
+Identifica la diferencia de
+fase y le aplica la
+condici´ on de m´ ınimo
+absoluto para la
+amplitud. Hace la
+aproximaci´ on de ´ angulo
+peque˜ no, para el ´ angulo
+del rayo en la pantalla.
+Expresa correctamente la
+longitud de onda en
+t´ ermino de los
+par´ ametros geom´ etricos
+b¡nada!,
+completamente
+err´ oneo, o bien
+responde sin
+argumentarDespeja correctamente el
+valor de d en funci´ on de
+D.—Despeja correctamente el
+valor de d en funci´ on de
+D. Un nuevo d ´se
+relaciona con un D ´= 0.5
+D Reconoce que hay que
+duplicar la distancia entre
+las fuentes
+c¡nada!,
+completamente
+err´ oneo, o bien
+responde sin
+argumentarIdentifica que la
+diferencia de camino
+´ opticos de ambas fuentes
+al punto central es el
+mismo Y por ello este
+punto debiera ser un
+m´ aximo. No da mas
+argumentos.Propone una diferencia de
+fase equivocada a pesar
+de haber identificado que
+la diferencia de camino
+´ opticos de ambas fuentes
+al punto central es el
+mismoResponde correctamente
+que el desfase es π.
+Segundo Semestre 2023 -9- FIS140

@@ -1,4 +1,5 @@
 import os
+from gestor_pdf import GestorPDF
 
 class Modelo:
     def __init__(self):
@@ -6,8 +7,13 @@ class Modelo:
         self.textos_cabecera = {}
 
     def agregar_archivo(self, archivo):
-        self.lista_archivos.append(archivo)
-        self.textos_cabecera[archivo] = ""
+        if archivo.endswith(".pdf"):
+            gestor_pdf = GestorPDF(archivo)
+            texto_pdf = gestor_pdf.extraer_texto()
+            self.textos_cabecera[archivo] = texto_pdf
+        else:
+            self.lista_archivos.append(archivo)
+            self.textos_cabecera[archivo] = ""
 
     def obtener_texto_cabecera_archivo(self, archivo):
         return self.textos_cabecera.get(archivo, "")
@@ -45,7 +51,7 @@ class Modelo:
                     contenido = archivo_file.read()
                     archivo_salida.write(contenido)
                     archivo_salida.write('\n\n')
-                    print(f"Escribiendo contenido del archivo {archivo}")  # Depuración
+                print(f"Escribiendo contenido del archivo {archivo}")  # Depuración
 
 
     

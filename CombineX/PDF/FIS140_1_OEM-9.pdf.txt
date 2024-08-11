@@ -1,0 +1,509 @@
+Física Moderna
+Módulo 1: Ondas Electromagnéticas
+Prof. Oscar Aravena O.
+Departamento de Física
+Universidad Técnica Federico Santa María
+12 de marzo de 2024
+1IntroducciónINTRODUCCIÓN
+ANTECEDENTES HISTÓRICOS
+¿Qué entendemos por “Física Moderna”?
+Para finales del siglo XIX se creía que, “no había nada nuevo que descubrir”:
+#La mecánica de Newton junto con su Ley de Gravitación Universal (1687) ✓
+#El electromagnetismo estaba “recién unificado” por Maxwell (1865) ✓
+#La Termodinámica y la Teoría Cinética estaba consolidada y era capaz de explicar
+una gran variedad de fenómenos ✓
+¡Nada podía malir sal!
+3INTRODUCCIÓN
+ANTECEDENTES HISTÓRICOS
+Justamente, a finales del siglo XIX:
+#H. Becquerel (1896) describe la radiactividad.
+#J. J. Thomson (1897) descubre el electrón.
+#A. Einstein publica 3 artículos en los cuales explica:
+◦El movimiento Browniano,
+◦El Efecto Fotoeléctrico,
+◦La Teoría Especial de la Relatividad.
+#E. Rutherford (1911) descubre el núcleo atómico -esto es conclusión de trabajos
+realizados en 1909- .
+...Esta historia continuará!
+4INTRODUCCIÓN
+REVISIÓN DEL ELECTROMAGNETISMO
+Recordar que el movimiento de cargas en presencia de campos
+viene dado por la Fuerza de Lorentz:
+®F=q®E+q®v×®B
+Donde los campos se obtienen a partir de:
+®E=1
+4𝜋𝜀0∫dq
+r2ˆr;®B=𝜇0
+4𝜋∫id®ℓ×ˆr
+r2
+Siendo:
+#𝜀0=8,8541878176×10−12𝒞2
+N m2
+, laPermitividad eléctrica del vacío.
+#𝜇0=4𝜋×10−7
+T m
+A
+, laPermeabilidad magnética del vacío.
+5INTRODUCCIÓN
+REVISIÓN DEL ELECTROMAGNETISMO
+Ecuaciones de Maxwell
+1. Ley de Gauss (campo eléctrico):
+∮
+®E·d®S=1
+𝜀0∫
+𝜌dV⇐⇒®∇·®E=𝜌
+𝜀0
+2. Ley de Gauss (campo magnético):
+∮
+®B·d®S=0⇐⇒®∇·®B=0
+Comentarios:
+#La primera nos dice que es posible aislar cargas eléctricas. Es más, tenemos cargas
+positivas y negativas.
+#La segunda nos dice que NO es posible aislar polos magnéticos -el equivalente a una
+“carga magnética”-
+6INTRODUCCIÓN
+REVISIÓN DEL ELECTROMAGNETISMO
+Ecuaciones de Maxwell
+3. Ley Ampère-Maxwell:
+∮
+®B·d®ℓ=𝜇0∫
+®𝒥·d®S+𝜇0𝜀0d
+dt∫
+®E·d®S⇐⇒®∇×®B=𝜇0®𝒥+𝜇0𝜀0𝜕®E
+𝜕t
+AMaxwellseledebeelsegundotérminodelaLeydeAmpère,¡estopermitelaConser-
+vación de la carga! Considere un condensador de placas paralelas:
+Nótese que para un mismo contorno de integración , el resultado
+depende de la superficie que el borde que éste delimita.
+-¡Algo raro pasa aquí!-
+7INTRODUCCIÓN
+REVISIÓN DEL ELECTROMAGNETISMO
+Ecuaciones de Maxwell
+3. Ley Ampère-Maxwell: Teniendo en consideración que se el
+condensador se está cargando, el Flujo Eléctrico entre sus
+placas está variando en el tiempo:
+Φ®E=∫
+®E·d®S=EA=𝜎
+𝜀0
+A
+q=𝜀0∫
+®E·d®S
+ID=dq
+dt=𝜀0d
+dt∫
+®E·d®S
+Donde IDrecibeelnombrede “CorrientedeDesplazamiento” .
+∮
+®B·d®ℓ=𝜇0∫
+®𝒥·d®S+𝜇0𝜀0d
+dt∫
+®E·d®S
+®∇×®B=𝜇0®𝒥+𝜇0𝜀0𝜕®E
+𝜕t✓
+8INTRODUCCIÓN
+REVISIÓN DEL ELECTROMAGNETISMO
+Ecuaciones de Maxwell
+4. Ley de Faraday:
+∮
+®E·d®ℓ=−d
+dt∫
+®B·d®S⇐⇒®∇×®E=−𝜕®B
+𝜕t
+9INTRODUCCIÓN
+REVISIÓN DEL ELECTROMAGNETISMO
+Síntesis del Electromagnetismo
+Forma Integral Forma Diferencial
+∮
+®E·d®S=1
+𝜀0∫
+𝜌dV ®∇·®E=𝜌
+𝜀0
+∮
+®B·d®S=0 ®∇·®B=0
+∮
+®B·d®ℓ=𝜇0∫
+®𝒥·d®S+𝜇0𝜀0d
+dt∫
+®E·d®S®∇×®B=𝜇0®𝒥+𝜇0𝜀0𝜕®E
+𝜕t
+∮
+®E·d®ℓ=−d
+dt∫
+®B·d®S ®∇×®E=−𝜕®B
+𝜕t
+Dinámica de una carga en movimiento:
+®F=q®E+q®v×®B
+10INTRODUCCIÓN
+REVISIÓN DEL ELECTROMAGNETISMO
+Al estudiar regiones del espacio en las cuales no existen cargas ni corrientes, las
+ecuaciones de Maxwell se reducen a:
+®∇·®E=0 ;®∇·®B=0
+Estonosdicequelaslíneasdecamposoncontinuas -loqueentraaunasuperficiecerradapor
+un lado, sale por el otro-
+®∇×®B=𝜇0𝜀0𝜕®E
+𝜕t;®∇×®E=−𝜕®B
+𝜕t
+Mientras que este par nos muestra cómo la variación en la distribución de los campos ¡se
+generan mutuamente! Justamente, la corriente de desplazamiento introducida por
+Maxwell convierte los campos estáticos en entes dinámicos.
+Nótese la simetría entre ambas ecuaciones
+11INTRODUCCIÓN
+REVISIÓN DEL ELECTROMAGNETISMO
+Ejercicio
+Enciertaregióndelespacioexisteuncampovectorialdenaturalezanodeterminada.En
+lafigurasedanalgunosvectoresdecampoendicharegión;lacomponente zdelcampo
+vale cero en todo el espacio, y las otras dos componentes no dependen de z.
+a)De manera genérica, llame
+®F(x,y,z)a este campo. Escriba
+todas las derivadas parciales del
+campo, indicando cuáles son
+positivas, cero o negativas.
+b)¿Es posible que el campo
+presentado sea un campo
+eléctrico?Siesasí¿cualespodrían
+ser sus causas? Fundamente su
+respuesta usando las ecuaciones
+diferenciales de Maxwell.
+c)¿Es posible que el campo presentado sea un campo magnético? Si es así ¿cuales
+podrían ser sus causas? Fundamente su respuesta usando las ecuaciones
+diferenciales de Maxwell.
+12INTRODUCCIÓN
+REVISIÓN DEL ELECTROMAGNETISMO
+Consideremos la ley de Faraday, por ejemplo:
+®∇×®E=−𝜕®B
+𝜕t
+®∇×()
+®∇×®∇×®E=−𝜕
+𝜕t
+®∇×®B
+Teniendo en consideración la siguiente identidad del Cálculo Vectorial:
+®∇×®∇×®E=®∇
+®∇·®E
+−
+®∇·®∇
+®E
+Donde®∇·®∇=∇2=𝜕2
+𝜕x2+𝜕2
+𝜕y2+𝜕2
+𝜕z2corresponde al Operador Laplaciano . Juntando lo
+anterior con la Ley de Gauss y la Ley de Ampère-Maxwell obtenemos:
+∇2®E=𝜇0𝜀0𝜕2®E
+𝜕t2
+¿Qué representa la ecuación anterior?
+13INTRODUCCIÓN
+REVISIÓN DEL ELECTROMAGNETISMO
+Ejercicio
+Demuestre que a partir de la Ley de Amperè-Maxwell es posible concluir que:
+∇2®B=𝜇0𝜀0𝜕2®B
+𝜕t2
+En el caso 1D, ambas expresiones se reducen a:
+𝜕2®E
+𝜕x2=𝜇0𝜀0𝜕2®E
+𝜕t2;𝜕2®B
+𝜕x2=𝜇0𝜀0𝜕2®B
+𝜕t2
+De donde reconocemos que la rapidez de propagación de las ondas asociadas a los
+campos®Ey®Bes:
+c=1√𝜇0𝜀0=299,792,458≈3,0×108hm
+si
+¡El secreto mejor guardado del electromagnetismo es la luz!
+-óptica-
+Comentario: advierta que estas ondas ¡no requieren de un medio material para
+propagarse!14INTRODUCCIÓN
+GENERALIDADES DE LAS ONDAS
+La ecuación (genérica, 1D):
+𝜕2y
+𝜕x2=1
+v2
+p𝜕2y
+𝜕t2
+se denomina Ecuación de Onda , y describe la propagación de
+perturbacionesenunadimensión,ennuestrocaso,lapropagación
+de los campos®Ey®Ba velocidad vp=c-¡la velocidad de la luz!-
+Es posible demostrar que el conjunto solución de la ecuación de onda viene dada por:
+y(x,t)=f(x+ct)+f(x−ct)
+la cual corresponde a una onda viajera.
+15INTRODUCCIÓN
+GENERALIDADES DE LAS ONDAS
+Ejercicio Onda Viajera
+Demuestre que y(x,t)=f(x±ct)es solución de la ecuación de onda:
+𝜕2y
+𝜕x2=1
+c2𝜕2y
+𝜕t2
+UntipoparticulardeOndasViajerassonlasOndasarmónicas.Supongala oscilación del
+campo eléctrico de una onda de la forma: E=E0sin(𝜔t). A cierta distancia del eje x
+colocamos un detector D, una vez emitidas las señales, éstas llegarán con un tiempo de
+retardo-delay- td, esto decir:
+E(x)=E0sin(𝜔t)|                 {z                 }
+Oscilación−→ E(x,t)=E0sin[𝜔(t−td)]|                            {z                            }
+Onda
+16INTRODUCCIÓN
+GENERALIDADES DE LAS ONDAS
+Desarrollando la onda armónica:
+E(x,t)=E0sin(𝜔t−𝜔td)
+E(x,t)=E0sin
+𝜔t−𝜔
+cx
+=E0sin(kx−𝜔t)
+-Recordar que no conocemos el valor de la constante E0-
+Ejercicio
+Demuestre que las funciones:
+E(x,t)=E0sin(kx−𝜔t)
+E(x,t)=E0sin(kx)cos(𝜔t)
+Son soluciones de la Ecuación de Onda. Para que esto así sea, ¿Cómo se relacionan las
+constantes 𝜔,kyc?
+17INTRODUCCIÓN
+GENERALIDADES DE LAS ONDAS
+𝜆yTrepresentan los períodos espaciales y temporales respectivamente:
+k=2𝜋
+𝜆;𝜔=2𝜋
+T;𝜔=kc⇔c=𝜆
+T=𝜆f
+#krecibe el nombre de Número de Onda.
+#𝜔en cambio, Frecuencia Angular.
+Finalmente,laexpresión 𝜔=kcrepresentala relación de dispersión -¡algoqueusaremosa
+lo largo de todo el curso! (lea acerca de esto para informarse mientras tanto)-
+18Ondas ElectromagnéticasONDAS ELECTROMAGNÉTICAS
+ESPECTRO ELECTROMAGNÉTICO
+20ONDAS ELECTROMAGNÉTICAS
+EJERCICIO
+Ejercicio
+Suponga una onda armónica que se propaga en el eje x.
+#A partir de la Ley de Gauss, ¿Qué puede concluir para el campo eléctrico?
+#Nosinteresalavariacióndinámicadeloscampos.Asumiendoque Ex=0¿Cómose
+relaciona la velocidad de propagación de la onda con la de oscilación del campo
+eléctrico?
+#Por simplicidad del cálculo, consideremos una Onda Electromagnética cuyo campo
+eléctrico solo oscila en el eje y. A partir de la Ley de Faraday, ¿Qué puede concluir
+acerca de su Campo Magnético? ¿En qué dirección oscila?
+#Considerando ahora que también debe ser válida la Ley de Ampère-Maxwell ¿Qué
+puede concluir? ¿A qué velocidad viajan estas ondas?
+#Si en x=0yt=0las amplitudes de los campos eléctrico y magnético son 0, escriba
+cada una de las respectivas Funciones de Onda .
+#Suponga que la máxima amplitud de oscilación de los campos eléctrico y
+magnético son E0yB0, determine una expresión que las relacione Hint: puede
+apoyarse en la conclusión cuando usó la Ley de Faraday.
+21ONDAS ELECTROMAGNÉTICAS
+DENSIDAD DE ENERGÍA DE LOS CAMPOS EYB
+UE=1
+2CΔV2
+UE=1
+2
+𝜀0A
+D
+(ED)2
+UE=1
+2𝜀0E2×Vol.
+⇓
+𝒰E=1
+2𝜀0E2UB=1
+2LI2
+UB=1
+2
+𝜇0n2Vol.
+B0
+𝜇0n2
+UB=1
+2𝜇0B2×Vol.
+⇓
+𝒰B=1
+2𝜇0B2
+Puesto que E=cB⇒𝒰 E=𝒰B. Por lo tanto:
+𝒰OEM=𝜀0E2
+22ONDAS ELECTROMAGNÉTICAS
+INTENSIDAD DE UNA ONDA ELECTROMAGNÉTICA
+Lacantidaddeenergíacontenidaenlasecciónde
+cilindro viene dada por:
+U=𝒰OEM AΔx
+U=𝒰OEM A(cΔt)
+Definimosladensidaddeflujo(intensidad)como:
+ℐ=Energía
+Área×tiempo=𝒰OEMc=𝜀0cE2
+Ejemplo
+Unlásertieneunapotenciadesalidade 4,0[mW]yemiteunhazcuyaseccióntransversal
+es de 4
+mm2
+.
+a)Determinar la energía electromagnética contenida en 1[m]de longitud del haz de
+luz.
+b)Estimar la amplitud del campo eléctrico asociado a esta radiación.
+c)Silaluzimpactaperpendicularmentesobreunaplaca,calcularlapresiónqueejerce
+la radiación. Analice los casos en que la luz se absorbe y refleja completamente.
+23ONDAS ELECTROMAGNÉTICAS
+VECTOR DE POYNTING
+A partir de la intensidad de una onda electromagnética:
+ℐ=𝜀0cE2=𝜀0√𝜇0𝜀0E(cB)⇒ℐ=EB
+𝜇0=®𝒮
+Donde®𝒮=®E×®B
+𝜇0recibe el nombre de Vector de Poynting -¡en el vacío!- , y representa la
+dirección del transporte de la densidad de flujo de energía y su norma corresponde a la
+-Intenisidad-
+24ONDAS ELECTROMAGNÉTICAS
+VECTOR DE POYNTING
+Ejemplo
+Acontinuación,sepresentanlasfuncionesdeondadelcampoeléctricoparatresOndas
+Electromagnéticas.
+®E1(x,t)=E0sin(kx−𝜔t)ˆj
+®E2(x,t)=E0√
+2
+sin(kx−𝜔t)ˆj+sin(kx−𝜔t)ˆk
+®E3(x,t)=E0√
+2sin(kx−𝜔t)ˆj−E0√
+2cos(kx−𝜔t)ˆk
+donde el factor1√
+2ha sido introducido para que todas ondas tengan la misma norma.
+Es decir, representen la misma Onda Electromagnética, pero con distinta polarización .
+a)¿En qué dirección oscilan los campos eléctricos dados y en qué dirección se
+propagan las Ondas Electromagnéticas.
+b)Fĳeunplanodeoscilación.IndiquequésucedeconelCampoElectrícoencadauno
+de los casos a medida que pasa el tiempo (se aconseja que responda a través de un
+dibujo y concluya)
+c)Determine intensidad de cada Onda Electromagnética. En algún caso ¿es la
+intensidad media igual a la intensidad instantánea?
+25ONDAS ELECTROMAGNÉTICAS
+ONDAS PLANAS Y ONDAS ESFÉRICAS
+Consideremos una fuente que emite radiación de manera Isotrópica , es decir, igual en
+todas direcciones. En el caso 3D se forman casquetes esféricos. Dos cascarones
+consecutivos estarán separados en una distancia 𝜆-Período Espacial-
+(Muy lejos)
+A distancias lejanas a la fuente, los cascarones esféricos se verán como Frentes de onda
+plano.En este caso, la amplitud de oscilación de la onda será constante, es decir:
+E(r,t)=E0cos(kr−𝜔t)
+En cambio, cerca de la fuente, los frentes de ondas esféricos serán de la forma:
+E(r,t)=E0
+rcos(kr−𝜔t)
+26ONDAS ELECTROMAGNÉTICAS
+EJERCICIO
+Acerca de las ondas esféricas
+En el caso de Ondas Esféricas, cuya única dependencia es radial, el Laplaciano de la
+parte radial de la Ecuación de Onda en coordenadas esféricas viene dado por:
+1
+r𝜕2
+𝜕r2(rE)=1
+c2𝜕2E
+𝜕t2
+𝜕2
+𝜕r2(rE)=1
+c2𝜕2
+𝜕t2(rE)
+Expresiónsimilaralaecuacióndeonda1D.Luego,susolucióngenéricadeondaviajera
+cumple con:
+Er=E0cos(kr−𝜔t)=⇒E(r)=E0
+rcos(kr−𝜔t)✓
+Un comentario igual de válido es el siguiente: como la intensidad es proporcional a la
+amplitud al cuadrado,
+ℐ=𝒫
+A≈E2
+0
+A su vez, el área del casquete aumenta proporcional a r2. Así, por conservación de la
+energía:
+E2
+0≈1
+r2−→E0≈1
+r;∴E(r)=E0
+rcos(kr−𝜔t)
+27ONDAS ELECTROMAGNÉTICAS
+POLARIZACIÓN
+Ejercicio
+La intensidad de la radiación solar que llega a las capas superiores de la atmósfera
+terrestre es de, aproximadamente, 1,4
+kW
+m2
+. Considere además que la distancia de la
+Tierra al Sol es de 1,00[UA]1.
+a)Determine la potencia de la radiación que emite el Sol.
+b)Determine la potencia de la radiación solar recibida en la Tierra.
+Si la distancia del Sol a Marte de 1,52[UA]y su diámetro un 53 %menos que el de
+la Tierra.
+c)Determine la potencia de la radiación solar recibida en Marte.
+d)Si la raza humana colonizara Marte, ¿Cuánta potencia obtendría del sol en 1
+m2
+(asuma que la radiación incide normalmente)?
+1Unidad Astronómica
+28ONDAS ELECTROMAGNÉTICAS
+POLARIZACIÓN
+Polarización
+Lapolarizacióndelaluzestáasociadaaladireccióndeoscilacióndesucampoeléctrico
+-esto es una convención- en un plano dado. La polarización de la luz puede ser:
+#Lineal
+#Circular
+#Elíptica
+Ejemplo
+Acontinuación,sepresentanlasfuncionesdeondadelcampoeléctricoparatresOndas
+Electromagnéticas.
+®E1(x,t)=E0sin(kx−𝜔t)ˆj
+®E2(x,t)=E0√
+2
+sin(kx−𝜔t)ˆj+sin(kx−𝜔t)ˆk
+®E3(x,t)=E0√
+2sin(kx−𝜔t)ˆj−E0√
+2cos(kx−𝜔t)ˆk
+¿Qué puede afirmar sobre su estado de polarización?
+29ONDAS ELECTROMAGNÉTICAS
+POLARIZACIÓN: LEY DE MALUS
+En el caso de tener luz no polarizada -“Luz Blanca”- , ésta corresponde a una suma
+incoherente de ondas polarizadas en todas direcciones.
+Eje de polarización
+®E(z,t)=E0sin(kz−𝜔t)ˆi+E0sin(kz−𝜔t)ˆj
+↓
+ℐ=𝜀0c®E·®E
+ℐ=𝜀0c(1+1)E2
+0sin2(kz−𝜔t)=⇒⟨ℐ⟩=𝜀0cE2=ℐ0
+Cuando esta luz pasa por un polarizador lineal:
+ℐ=𝜀0cE2cos2(𝜗)=⇒⟨ℐ⟩=𝜀0cE2
+cos2(𝜗)
+=ℐ0
+2
+¡Su intensidad se reduce a la mitad!
+30ONDAS ELECTROMAGNÉTICAS
+POLARIZACIÓN: LEY DE MALUS
+Cuando esta luz pasa por un polarizador lineal, cuyo eje de polarización se encuentra
+orientado en 𝜗respecto al eje de polarización de la luz incidente.
+Eje de polarización
+Eje de polarización
+A la salida del segundo polarizador la amplitud de oscilación del campo eléctrico se verá
+afectada en un factor cos(𝜗):
+⟨ℐ⟩=ℐ0cos2(𝜗)
+Expresión conocida como Ley de Malus
+31ONDAS ELECTROMAGNÉTICAS
+POLARIZACIÓN: APLICACIONES
+32ONDAS ELECTROMAGNÉTICAS
+POLARIZACIÓN: ÁNGULO DE BREWSTER
+La luz puede polarizarse linealmente, bajo determinadas circunstancias, por reflexión.
+En este caso, el rayo reflejado debe
+ser perpendicular al rayo transmiti-
+do2
+Bajo estas circunstancias:
+𝜗B=tan−1𝜂2
+𝜂1
+Luz linealmente 
+polarizada
+Luz parcialmente
+polarizadaLuz blanca
+2Mayores detalles se abordarán más adelante.
+33ONDAS ELECTROMAGNÉTICAS
+BIRREFRINGENCIA
+Existen materiales -cristales principalmente- que no poseen las mismas propiedades
+ópticas en iguales direcciones. Esta anisotropía genera que la luz posea más de un índice
+de refracción y, por tanto, la luz viaja más rápido en un eje que en otro.
+Aquel eje en el cual las propiedades ópticas de la luz no se ven afectas se denomina eje
+ordinario, en cambio, el otro, se denomina eje extraordinario.
+Cuando la luz ingresa a estos materiales se desdobla en dos rayos linealmente
+polarizados
+34ONDAS ELECTROMAGNÉTICAS
+FOTOELASTICIDAD
+Otro aspecto importante a destacar es la Fotoelasticidad , la cual corresponde al cambio
+de propiedades ópticas bajo deformaciones mecánicas. Es una característica de los
+materiales dielétricos y se usa habitualmente para determinar las distribuciones de
+esfuerzos.
+La medición se logra al evaluar el cambio del índice de refracción de una pieza al
+someterse esfuerzos. En el caso de una pieza no transparente, ésta se cubre con una
+resina birrefringente.
+35Física Moderna
+Módulo 1: Ondas Electromagnéticas
+Prof. Oscar Aravena O.
+Departamento de Física
+Universidad Técnica Federico Santa María
+12 de marzo de 2024
+36

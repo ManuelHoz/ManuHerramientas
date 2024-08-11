@@ -1,0 +1,233 @@
+Física Moderna
+Módulo 2: Óptica Geométrica
+Prof. Oscar Aravena O.
+Departamento de Física
+Universidad Técnica Federico Santa María
+1 de abril de 2024
+1IntroducciónINTRODUCCIÓN
+¿QUÉ ES LA ÓPTICA?
+¿Qué es la óptica?
+Acerca de la Óptica
+#Óptica Geométrica : luz≈rayo que viaja en línea recta. Este modelo es válido
+cuando la longitud de onda de la luz es mucho mayor que el tamaño de los
+objetos/obstáculos.
+#Óptica Física : luz exhibe comportamiento de onda, dando paso a fenómenos de
+interferencia,difracción,dispersión,etc.Estoesnotoriocuandolalongituddeonda
+es comparable al tamaño de los objetos/obstáculos.
+3INTRODUCCIÓN
+ANTECEDENTES HISTÓRICOS
+#Galileo(≈1638):a través de dos
+observadores separados a una
+distancia de, aproximadamente,
+1[mile]. Conclusión, la rapidez de la
+luz es infinita -¡o muy grande!-
+#Ole Roemer y Christiaan Huygens
+(1676):a partir del movimiento de
+una de las lunas de Júpiter, Io.
+Conclusión (Huygens): el límite
+inferior para la rapidez de
+propagación de la luz debe ser,
+aproximadamente, 2,3×108hm
+si
+.
+#Armand Fizeau (1849): por medio de una rueda dentada. Conclusión: rapidez de
+propagación debe ser de, alrededor 3,1×108hm
+si
+4INTRODUCCIÓN
+VELOCIDAD DE LA LUZ EN DIELÉCTRICOS
+Cuandolaluzingresaaundielectriconoapaco,elmaterialsepolarizaydificultaelpaso
+del campo eléctrico. Recordemos:
+#En el vacío:𝜕2®E
+𝜕x2=𝜇0𝜀0𝜕2®E
+𝜕t2=⇒c=1√𝜇0𝜀0
+#En medios materiales:𝜕2®E
+𝜕x2=𝜇𝜀𝜕2®E
+𝜕t2=⇒v=1√𝜇𝜀
+En este último caso: 𝜇0→𝜇=𝜅m𝜇0y𝜀0→𝜀=𝜅e𝜀0representan cantidades en medios
+materiales. En la mayoría de los dieléctricos, 𝜅m≈1. Luego:
+v=1√𝜅e𝜇𝜀0=c√𝜅e
+Definimos el índice de refracción como la razón entre la rapidez de la luz en el vacío, c,
+sobre la rapidez en el medio, v, es decir:
+𝜂=c
+v
+El índice de refracción es una medida de cuánto se reduce la rapidez de propagación de
+la luz en un medio respecto al vacío.
+5Óptica GeométricaÓPTICA GEOMÉTRICA
+PRINCIPIO DE FERMAT: LEY DE REFLEXIÓN
+Principio de Fermat (1662)
+Un rayo de luz que viaja desde un punto Aa un punto B
+emplea el camino cuyo tiempo sea mínimo.
+Ley de reflexión
+Suponga un rayo de luz que debe viajar desde
+unpunto Aaunpunto B,ambosubicadosenel
+mismo medio, y reflejándose en una superficie
+lisa según se detalla en la figura adjunta.
+ℒ=√
+a2+x2+q
+b2+(d−x)2
+dt
+dx=1
+cdℒ
+dx
+0=x√
+a2+x2−(d−x)q
+b2+(d−x)2
+𝜗i=𝜗r
+7ÓPTICA GEOMÉTRICA
+ESPEJOS PLANOS
+(imagen)
+Espejo de “cuerpo entero”
+Suponga que desea comprar un “espejo de cuerpo entero” . Si su altura es H, determine el
+tamaño mínimo del espejo.
+8ÓPTICA GEOMÉTRICA
+ESPEJOS PLANOS
+Reglas para dibujar y formar imágenes en espejos planos
+#A partir de la ley de reflexión, trace al menos dos rayos -¡generalmente con dos es
+suficiente!- que impacten el espejo. Dibuje tanto el rayo incidente como el rayo
+reflejado.
+#La imagen formada se obtiene a partir de la intersección de la prolongación de los
+rayos reflejados.
+Imágenes reales v/s virtuales
+#Imagen Virtual: corresponde a aquella formada por la
+prolongación de los rayos reflejados. Los rayos “parecen
+venir”del lugar donde se forma la imagen.
+#Imagen Real: corresponde a aquella formada por
+intersección de los rayos reflejados -¡no de su prolongación!- .
+Para pensar
+¿Porquécuandosemiraaunaespejoplanosecambialaizquierdaporladerecha,pero
+no arriba por abajo?
+9ÓPTICA GEOMÉTRICA
+ESPEJOS CURVOS
+Reglas para dibujar y formar imágenes en espejos curvos
+#Rayo paralelo al eje óptico impacta el espejo y se refleja pasando por el foco del
+espejo.
+#Rayo que pasa por el foco impacta el espejo y se refleja paralelo al eje óptico
+#Rayo reflejado en el vértice del espejo se refleja con el mismo ángulo de
+incidencia, respecto a al eje óptico.
+#Rayo que pasa por el centro de curvatura impacta el espejo y refleja regresando el
+centro de curvatura.
+(Eje óptico) (Foco)
+10ÓPTICA GEOMÉTRICA
+LENTES DELGADAS
+Reglas para dibujar y formar imágenes en lentes delgadas
+#Rayo paralelo al eje óptico impacta el espejo y se refleja pasando por el foco del
+espejo.
+#Rayo que pasa por el foco impacta el espejo y se refleja paralelo al eje óptico
+#Rayo reflejado en el vértice del espejo se refleja con el mismo ángulo de
+incidencia, respecto a al eje óptico.
+(Eje óptico)
+¿Cómo funciona la lupa?
+11ÓPTICA GEOMÉTRICA
+LENTES DELGADAS: APLICACIONES
+Entonces... ¿Cómo funciona el microscopio?
+12ÓPTICA GEOMÉTRICA
+LENTES DELGADAS: APLICACIONES
+13ÓPTICA GEOMÉTRICA
+LENTES DELGADAS: APLICACIONES
+¿Con qué tipo de lentes se corrigen cada una de estas
+enfermedades?
+14ÓPTICA GEOMÉTRICA
+PRINCIPIO DE FERMAT: LEY DE REFRACCIÓN
+Ley de Snell (refracción)
+Suponga un rayo de luz que debe viajar desde
+un punto Aa un punto B, ahora ubicados en
+mediosdeíndicesderefracción 𝜂1y𝜂2respec-
+tivamente,segúnsedetallaenlafiguraadjunta.
+ℒ=√
+a2+x2
+|    {z    }
+ℒ1+q
+b2+(d−x)2
+|            {z            }
+ℒ2
+t=ℒ1
+v1+ℒ2
+v2;𝜂=c
+v
+dt
+dx=𝜂1
+cdℒ1
+dx+𝜂2
+cdℒ2
+dx
+0=𝜂1x√
+a2+x2−𝜂2(d−x)q
+b2+(d−x)2
+𝜂1sin(𝜗i)=𝜂2sin(𝜗t)
+15ÓPTICA GEOMÉTRICA
+APLICACIONES DE LA LEY DE SNELL
+Reflexión total interna
+En relación a la siguiente figura:
+a)Para que el rayo se curve como se indica, ¿Cómo se relación los índices de
+refracción presentados?
+b)Si el medio dos es agua, 𝜂agua=1,33, y el medio uno es aire, 𝜂aire=1,00¿Para qué
+valor de ángulo crítico, 𝜗c, la luz no cambia de medio, es decir, permanece en el
+agua? Este fenómeno se conoce como reflexión total interna.
+16ÓPTICA GEOMÉTRICA
+APLICACIONES DE LA LEY DE SNELL
+Reflexión total interna
+Un cable de fibra óptica es construido a partir de dos plásticos. Un núcleo central, de
+índicederefracción nc=1,65,esenvueltoporunacoberturadeplástico,cuyoíndicede
+refracciónes np=1,60.Unrayodeluzmonocromáticoincidesobreunodesusextremos
+conunángulo 𝜗respectoalanormaldelcortedelcable.Elrayoproducereflexióntotal
+interna en el punto A, el cual se encuentra en la superficie interna de la fibra.
+Determine el valor del ángulo 𝜗, medido respecto al eje de la fibra, para el cual se
+produce reflexión total interna en el punto A.
+17ONDAS ELECTROMAGNÉTICAS
+POLARIZACIÓN: ÁNGULO DE BREWSTER
+La luz puede polarizarse linealmente, bajo determinadas circunstancias, por reflexión.
+En este caso, el rayo reflejado debe
+ser perpendicular al rayo transmiti-
+do1
+Bajoestascircunstancias,demuestre
+que:
+𝜗B=tan−1𝜂2
+𝜂1
+Luz linealmente 
+polarizada
+Luz parcialmente
+polarizadaLuz blanca
+1Mayores detalles se abordarán más adelante.
+18ÓPTICA GEOMÉTRICA
+GENERALIDADES REFLEXIÓN Y REFRACCIÓN
+Si bien a partir del principio de Fermat es posible describir variados fenómenos
+asociados a la Óptica Geométrica, éste no es capaz de explicar qué sucede con la
+frecuencia cuando la luz cambia de medio. Para ello consideremos 3 ondas viajeras:
+ℱi
+®ki·®ri−𝜔it
+;ℱr
+®kr·®rr−𝜔rt
+;ℱt
+®kt·®rt−𝜔tt
+Las cuales representan las ondas incidentes, reflejadas y transmitidas respectivamente.
+En la frontera(r=0), donde se produce el cambio
+de fase, por continuidad de la función de onda:
+ℱi(𝜔it)+ℱr(𝜔rt)=ℱt(𝜔tt)
+Lo anterior es válido para todo tsí y solo sí:
+𝜔i=𝜔r=𝜔t=𝜔
+Ejercicio
+A partir de la condición de borde en la frontera
+cuandoseproduceelcambiodefase,demuestre
+la ley de Snell.
+19ÓPTICA GEOMÉTRICA
+DISPERSIÓN
+Velocidaddefase ydegrupo
+#vfase=𝜔
+k=𝜆
+T=𝜆f
+#vgrupo=𝜕𝜔
+𝜕k
+20ÓPTICA GEOMÉTRICA
+DISPERSIÓN
+Algunas preguntas inocentes:
+#¿Por qué el cielo se veazulgran parte del día y rojizoal
+amanecer/atardecer?
+#¿Por qué las nubes son blancas?
+#¿Por qué las nubes se vennegrascuando va a llover?
+21Física Moderna
+Módulo 2: Óptica Geométrica
+Prof. Oscar Aravena O.
+Departamento de Física
+Universidad Técnica Federico Santa María
+1 de abril de 2024
+22

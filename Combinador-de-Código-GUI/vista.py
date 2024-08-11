@@ -68,7 +68,7 @@ class Vista:
             self.frame_botones, text="Seleccionar Directorio", bootstyle="success-outline", padding=(10, 5)
         )
         self.boton_seleccionar_directorio.pack(side=tk.TOP, fill=tk.X, padx=10, pady=5)
-        #boton para añadir archivos seleccionados
+        
         self.boton_anadir_archivo = ttk.Button(
             self.frame_botones, text="Añadir Archivos", bootstyle="success-outline", padding=(10, 5)
         )
@@ -89,9 +89,13 @@ class Vista:
         )
         self.boton_copiar.pack(side=tk.TOP, fill=tk.X, padx=10, pady=5)
 
-        # Checkboxes para tipos de archivo
+        # Inicialización de frame_checkboxes antes de crear las checkboxes
         self.frame_checkboxes = ttk.Frame(self.frame_botones, padding=10)
         self.frame_checkboxes.pack(side=tk.BOTTOM, fill=tk.X, pady=10)
+
+        self.checkbox_pdf_var = tk.BooleanVar(value=False)
+        self.checkbox_pdf = ttk.Checkbutton(self.frame_checkboxes, text="*.pdf", variable=self.checkbox_pdf_var, bootstyle="primary")
+        self.checkbox_pdf.pack(side=tk.LEFT, padx=5)
 
         self.checkbox_py_var = tk.BooleanVar(value=True)
         self.checkbox_py = ttk.Checkbutton(self.frame_checkboxes, text="*.py", variable=self.checkbox_py_var, bootstyle="primary")
@@ -122,6 +126,8 @@ class Vista:
             tipos_archivo.append("*.md")
         if self.checkbox_m_var.get():
             tipos_archivo.append("*.m")
+        if self.checkbox_pdf_var.get():
+            tipos_archivo.append("*.pdf")
         return tipos_archivo
         
     def mostrar_texto_cabecera(self, texto_mostrado):
@@ -147,5 +153,3 @@ class Vista:
     def limpiar_listbox(self):
         for widget in self.frame_canvas.winfo_children():
             widget.destroy()
-
-    
